@@ -3,7 +3,6 @@ package com.github.mangila.validator;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -67,5 +66,15 @@ class ValidatorUtilTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
         assertThat(ValidatorUtil.isValidBasicIsoDate("")).isFalse();
         assertThat(ValidatorUtil.hasValidLuhnDigit("")).isFalse();
+    }
+
+    @Test
+    void testIsOld() {
+        assertThat(ValidatorUtil.isOld("19240101")).isTrue();
+    }
+
+    @Test
+    void testIsOldFail() {
+        assertThat(ValidatorUtil.isOld("19300202")).isFalse();
     }
 }

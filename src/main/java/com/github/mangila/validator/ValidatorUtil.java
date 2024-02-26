@@ -30,4 +30,14 @@ public class ValidatorUtil {
     public static boolean hasValidLuhnDigit(@NotNull String code) {
         return LuhnCheckDigit.LUHN_CHECK_DIGIT.isValid(code);
     }
+
+    public static boolean isOld(@NotNull String basicIsoDate) {
+        try {
+            var date = LocalDate.parse(basicIsoDate, DateTimeFormatter.BASIC_ISO_DATE);
+            var now = LocalDate.now();
+            return now.minusYears(date.getYear()).getYear() >= 100;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
 }

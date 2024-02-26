@@ -19,6 +19,9 @@ class SwedishPersonalNumberValidatorTest {
     void notValidDate() {
         assertThat(SwedishPersonalNumberValidator.isValid("20770101-1111"))
                 .isFalse();
+
+        assertThat(SwedishPersonalNumberValidator.isValid("20150101+1111"))
+                .isFalse();
     }
 
     @Test
