@@ -58,6 +58,8 @@ class ValidatorUtilTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> ValidatorUtil.hasValidLuhnDigit(null))
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> ValidatorUtil.isOld(null))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -66,6 +68,7 @@ class ValidatorUtilTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
         assertThat(ValidatorUtil.isValidBasicIsoDate("")).isFalse();
         assertThat(ValidatorUtil.hasValidLuhnDigit("")).isFalse();
+        assertThat(ValidatorUtil.isOld("")).isFalse();
     }
 
     @Test
