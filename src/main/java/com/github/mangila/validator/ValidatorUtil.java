@@ -16,7 +16,8 @@ public class ValidatorUtil {
     public static boolean isValidBasicIsoDate(@NotNull String basicIsoDate) {
         try {
             var date = LocalDate.parse(basicIsoDate, DateTimeFormatter.BASIC_ISO_DATE);
-            return date.isBefore(LocalDate.now());
+            var now = LocalDate.now();
+            return date.isBefore(now) || date.isEqual(now);
         } catch (DateTimeParseException e) {
             return false;
         }

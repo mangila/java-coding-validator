@@ -2,6 +2,9 @@ package com.github.mangila.validator;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,6 +17,13 @@ class ValidatorUtilTest {
         assertThat(ValidatorUtil.isValidBasicIsoDate("19931209"))
                 .isTrue();
         assertThat(ValidatorUtil.isValidBasicIsoDate("20201201"))
+                .isTrue();
+        assertThat(ValidatorUtil.isValidBasicIsoDate("20240226"))
+                .isTrue();
+        var nowString = LocalDate.now()
+                .toString()
+                .replaceAll("-", "");
+        assertThat(ValidatorUtil.isValidBasicIsoDate(nowString))
                 .isTrue();
     }
 
