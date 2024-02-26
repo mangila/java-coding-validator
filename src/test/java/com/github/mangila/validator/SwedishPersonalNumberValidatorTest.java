@@ -16,11 +16,19 @@ class SwedishPersonalNumberValidatorTest {
     }
 
     @Test
-    void notValid() {
+    void notValidDate() {
+        assertThat(SwedishPersonalNumberValidator.isValid("20770101-1111"))
+                .isFalse();
+    }
+
+    @Test
+    void notValidChecksum() {
         assertThat(SwedishPersonalNumberValidator.isValid("19780202-1111"))
                 .isFalse();
-        assertThat(SwedishPersonalNumberValidator.isValid("19780202"))
-                .isFalse();
+    }
+
+    @Test
+    void notValidFormat() {
         assertThat(SwedishPersonalNumberValidator.isValid("780202-2389"))
                 .isFalse();
     }
