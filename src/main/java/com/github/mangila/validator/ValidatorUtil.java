@@ -1,5 +1,6 @@
 package com.github.mangila.validator;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.validator.routines.checkdigit.LuhnCheckDigit;
 import org.jetbrains.annotations.NotNull;
 
@@ -7,11 +8,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+@UtilityClass
 public class ValidatorUtil {
-
-    private ValidatorUtil() {
-        // don´t invoke me
-    }
 
     public static boolean isValidBasicIsoDate(@NotNull String basicIsoDate) {
         try {

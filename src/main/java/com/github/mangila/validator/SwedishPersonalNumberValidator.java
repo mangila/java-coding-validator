@@ -1,18 +1,16 @@
 package com.github.mangila.validator;
 
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Pattern;
 
 @Slf4j
+@UtilityClass
 public class SwedishPersonalNumberValidator {
 
     private static final Pattern SWEDISH_PERSONAL_NUMBER = Pattern.compile("^(19|20)\\d{6}([+\\-])\\d{4}\\z");
-
-    private SwedishPersonalNumberValidator() {
-        // don´t invoke me
-    }
 
     /**
      * 1. Do I match the pattern yyyyMMdd(-/+)-xxxx
